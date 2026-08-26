@@ -7,6 +7,7 @@
 <title>THE ⚔ CONQUEROR — Name Generator</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -14,74 +15,119 @@
 body {
     margin: 0;
     min-height: 100vh;
+
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
     padding: 20px;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
 
     background:
-        radial-gradient(circle at top, #26334d 0%, #0b0f18 45%, #05070b 100%);
+        radial-gradient(
+            circle at top,
+            #26334d,
+            #0b0f18 50%,
+            #05070b
+        );
 
     color: white;
 }
 
+
+/* MAIN CARD */
+
 .card {
-    width: min(430px, 100%);
+    width: 100%;
+    max-width: 430px;
 
-    background: rgba(13, 18, 29, 0.95);
+    background: rgba(13,18,29,0.96);
 
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255,255,255,0.12);
 
     border-radius: 24px;
 
     padding: 28px;
 
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.5);
 }
 
-.hidden {
-    display: none !important;
-}
+
+/* TOP SYMBOL */
 
 .crest {
     text-align: center;
+
     font-size: 45px;
+
     margin-bottom: 5px;
 }
 
+
+/* TITLE */
+
 h1 {
     text-align: center;
-    font-size: 24px;
-    margin: 5px 0 8px;
 
-    letter-spacing: 1px;
+    font-size: 24px;
+
+    margin: 8px 0;
 }
 
-.sub {
+
+/* SUBTITLE */
+
+.subtitle {
     text-align: center;
+
     color: #aab4c7;
 
-    margin: 0 0 25px;
-
     font-size: 14px;
+
+    margin-bottom: 25px;
 }
+
+
+/* LABEL */
 
 label {
     display: block;
 
-    font-size: 13px;
-
     color: #b9c2d3;
 
-    margin: 15px 0 8px;
+    font-size: 13px;
+
+    margin-bottom: 8px;
 }
+
+
+/* MALE / FEMALE BUTTONS */
+
+.gender-buttons {
+    display: flex;
+
+    gap: 10px;
+}
+
+.gender-buttons button {
+    flex: 1;
+}
+
+.gender-buttons button.active {
+    background: #7f8da8;
+
+    color: white;
+}
+
+
+/* NAME INPUT */
 
 input {
     width: 100%;
 
-    padding: 14px 15px;
+    padding: 15px;
 
     border-radius: 13px;
 
@@ -91,178 +137,173 @@ input {
 
     color: white;
 
-    outline: none;
-
     font-size: 16px;
+
+    outline: none;
 }
 
 input:focus {
-    border-color: #7f8da8;
+    border-color: #8c9ab5;
 }
 
-button {
-    width: 100%;
 
-    padding: 14px;
-
-    border: 0;
-
-    border-radius: 13px;
-
-    cursor: pointer;
-
-    font-size: 15px;
-
-    font-weight: bold;
-
-    margin-top: 14px;
-
-    background: white;
-
-    color: #080b12;
-}
-
-button:hover {
-    filter: brightness(0.92);
-}
-
-.error {
-    color: #ff8e8e;
-
-    text-align: center;
-
-    font-size: 13px;
-
-    margin-top: 12px;
-
-    min-height: 18px;
-}
+/* PREVIEW */
 
 .preview {
     margin-top: 20px;
 
-    padding: 22px 12px;
-
-    border-radius: 16px;
+    padding: 22px 10px;
 
     background: #080c14;
 
     border: 1px solid #344056;
 
+    border-radius: 16px;
+
     text-align: center;
 
-    overflow: auto;
+    overflow-x: auto;
 }
 
-.preview small {
-    display: block;
 
+/* PREVIEW TITLE */
+
+.preview-title {
     color: #8792a7;
 
-    margin-bottom: 9px;
+    font-size: 12px;
+
+    margin-bottom: 10px;
 }
 
-#result {
-    font-size: 26px;
 
-    font-weight: 800;
+/* GENERATED NAME */
+
+#result {
+    font-size: 22px;
+
+    font-weight: bold;
 
     white-space: nowrap;
 }
 
-.copy {
-    margin-top: 12px;
+
+/* BUTTONS */
+
+button {
+    width: 100%;
+
+    margin-top: 14px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background: white;
+
+    color: #080b12;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
 }
 
-.logout {
-    background: #202838;
 
-    color: #d9deea;
+/* BUTTON PRESS EFFECT */
 
-    font-size: 13px;
+button:active {
+    transform: scale(0.98);
 }
 
-.note {
-    font-size: 11px;
 
-    color: #778298;
+/* INFO */
 
+.info {
     text-align: center;
 
     margin-top: 18px;
 
-    line-height: 1.5;
+    color: #778298;
+
+    font-size: 11px;
 }
+
 </style>
+
 </head>
 
 
 <body>
 
-<!-- =========================
-     GUILD LOGIN SCREEN
-========================= -->
 
-<div class="card" id="loginCard">
-
-    <div class="crest">⚔</div>
-
-    <h1>
-        THEㅤ⚔ㅤCONQUEROR
-    </h1>
-
-    <p class="sub">
-        Guild Name Generator
-    </p>
+<div class="card">
 
 
-    <label for="access">
-        Guild Access Code
-    </label>
+    <!-- GUILD SYMBOL -->
 
-    <input
-        id="access"
-        type="password"
-        placeholder="Enter guild access code"
-        autocomplete="off"
-    >
-
-
-    <button onclick="unlock()">
-        ENTER GUILD
-    </button>
-
-
-    <div class="error" id="loginError"></div>
-
-
-    <div class="note">
-        Private guild generator • Authorized members only
+    <div class="crest">
+        ⚔
     </div>
 
-</div>
 
-
-
-<!-- =========================
-     NAME GENERATOR
-========================= -->
-
-<div class="card hidden" id="generatorCard">
-
-    <div class="crest">⚔</div>
+    <!-- GUILD NAME -->
 
     <h1>
-        TCㅤ⚔ㅤNAME
+        THEㅤ⚔ㅤCONQUEROR
     </h1>
 
-    <p class="sub">
-        THEㅤ⚔ㅤCONQUEROR
-    </p>
+
+    <div class="subtitle">
+        Guild Name Generator
+    </div>
 
 
-    <label for="name">
+
+    <!-- STYLE SELECTION -->
+
+    <label>
+        Choose your style
+    </label>
+
+
+    <div class="gender-buttons">
+
+
+        <button
+            id="maleBtn"
+            class="active"
+            onclick="selectStyle('male')">
+
+            ⚔ MALE
+
+        </button>
+
+
+        <button
+            id="femaleBtn"
+            onclick="selectStyle('female')">
+
+            ♡ FEMALE
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- NAME INPUT -->
+
+    <label
+        for="name"
+        style="margin-top:20px;">
+
         Enter your Free Fire name
+
     </label>
 
 
@@ -270,39 +311,52 @@ button:hover {
         id="name"
         type="text"
         maxlength="20"
-        placeholder="e.g. SPENCER"
+        placeholder="Enter your name"
         autocomplete="off"
-        oninput="generate()"
+        oninput="generateName()"
     >
 
 
+
+    <!-- NAME PREVIEW -->
+
     <div class="preview">
 
-        <small>
-            Your guild name
-        </small>
 
-        <div id="result">
-            TCㅤ⚔ㅤＮＡＭＥ
+        <div class="preview-title">
+
+            YOUR GUILD NAME
+
         </div>
 
+
+        <div id="result">
+
+            TCㅤ⚔ㅤＮＡＭＥ
+
+        </div>
+
+
     </div>
 
 
-    <button class="copy" onclick="copyName()">
+
+    <!-- COPY BUTTON -->
+
+    <button onclick="copyName()">
+
         📋 COPY NAME
+
     </button>
 
 
-    <button class="logout" onclick="logout()">
-        🔒 LOCK GENERATOR
-    </button>
 
+    <div class="info">
 
-    <div class="note">
-        Approved guild format:
-        <b>TCㅤ⚔ㅤＮＡＭＥ</b>
+        Official THEㅤ⚔ㅤCONQUEROR name format
+
     </div>
+
 
 </div>
 
@@ -310,235 +364,295 @@ button:hover {
 
 <script>
 
-/* =========================
-   GUILD SETTINGS
-========================= */
 
-const ACCESS_CODE = "conqueror";
+/* CURRENT STYLE */
 
-const PREFIX = "TCㅤ⚔ㅤ";
+let selectedStyle = "male";
 
 
-/* =========================
-   FULL-WIDTH TEXT
-========================= */
+
+/* NAME PREFIXES */
+
+const MALE_PREFIX =
+    "TCㅤ⚔ㅤ";
+
+const FEMALE_PREFIX =
+    "TCㅤ♡ㅤ";
+
+
+
+/* FULL WIDTH CONVERTER */
 
 function fullWidth(text) {
 
+
     return [...text].map(character => {
 
-        const code = character.charCodeAt(0);
 
-        if (code >= 33 && code <= 126) {
+        const code =
+            character.charCodeAt(0);
 
-            return String.fromCharCode(code + 65248);
+
+        /* Convert normal characters */
+
+        if (
+            code >= 33 &&
+            code <= 126
+        ) {
+
+            return String.fromCharCode(
+                code + 65248
+            );
 
         }
 
-        if (character === " ") {
+
+        /* Convert spaces */
+
+        if (
+            character === " "
+        ) {
 
             return "　";
 
         }
 
+
         return character;
+
 
     }).join("");
 
 }
 
 
-/* =========================
-   UNLOCK GUILD
-========================= */
 
-function unlock() {
+/* SELECT MALE OR FEMALE */
 
-    const entered =
-        document.getElementById("access").value;
-
-    const error =
-        document.getElementById("loginError");
+function selectStyle(style) {
 
 
-    if (entered === ACCESS_CODE) {
+    selectedStyle = style;
 
-        sessionStorage.setItem(
-            "conquerorUnlocked",
-            "yes"
+
+    const maleBtn =
+        document.getElementById(
+            "maleBtn"
         );
 
 
-        document
-            .getElementById("loginCard")
-            .classList.add("hidden");
+    const femaleBtn =
+        document.getElementById(
+            "femaleBtn"
+        );
 
 
-        document
-            .getElementById("generatorCard")
-            .classList.remove("hidden");
+
+    if (
+        style === "male"
+    ) {
 
 
-        error.textContent = "";
+        maleBtn.classList.add(
+            "active"
+        );
 
-        document.getElementById("access").value = "";
 
-        document.getElementById("name").focus();
+        femaleBtn.classList.remove(
+            "active"
+        );
+
 
     }
 
     else {
 
-        error.textContent =
-            "Incorrect guild access code.";
+
+        femaleBtn.classList.add(
+            "active"
+        );
+
+
+        maleBtn.classList.remove(
+            "active"
+        );
+
 
     }
+
+
+    generateName();
 
 }
 
 
-/* =========================
-   GENERATE NAME
-========================= */
 
-function generate() {
+/* GENERATE NAME */
+
+function generateName() {
+
 
     const name =
-        document.getElementById("name").value.trim();
+        document.getElementById(
+            "name"
+        ).value.trim();
 
-
-    if (name) {
-
-        document.getElementById("result").textContent =
-            PREFIX + fullWidth(name);
-
-    }
-
-    else {
-
-        document.getElementById("result").textContent =
-            "TCㅤ⚔ㅤＮＡＭＥ";
-
-    }
-
-}
-
-
-/* =========================
-   COPY NAME
-========================= */
-
-async function copyName() {
 
     const result =
-        document.getElementById("result").textContent;
+        document.getElementById(
+            "result"
+        );
 
 
-    if (result === "TCㅤ⚔ㅤＮＡＭＥ") {
+
+    /* Empty name */
+
+    if (
+        name.length === 0
+    ) {
+
+
+        if (
+            selectedStyle === "male"
+        ) {
+
+
+            result.textContent =
+                "TCㅤ⚔ㅤＮＡＭＥ";
+
+
+        }
+
+        else {
+
+
+            result.textContent =
+                "TCㅤ♡ㅤＦＥＭＡＬＥＮＡＭＥ";
+
+
+        }
+
 
         return;
 
     }
 
 
-    try {
 
-        await navigator.clipboard.writeText(result);
+    /* Choose prefix */
 
-        alert("Copied: " + result);
+    const prefix =
+        selectedStyle === "male"
+        ? MALE_PREFIX
+        : FEMALE_PREFIX;
+
+
+
+    /* Show generated name */
+
+    result.textContent =
+        prefix + fullWidth(name);
+
+}
+
+
+
+/* COPY NAME */
+
+async function copyName() {
+
+
+    const result =
+        document.getElementById(
+            "result"
+        ).textContent;
+
+
+
+    /* Prevent copying empty result */
+
+    if (
+
+        result ===
+        "TCㅤ⚔ㅤＮＡＭＥ"
+
+        ||
+
+        result ===
+        "TCㅤ♡ㅤＦＥＭＡＬＥＮＡＭＥ"
+
+    ) {
+
+
+        alert(
+            "Enter your name first!"
+        );
+
+
+        return;
 
     }
+
+
+
+    /* Copy */
+
+    try {
+
+
+        await navigator.clipboard.writeText(
+            result
+        );
+
+
+        alert(
+            "Copied: " + result
+        );
+
+
+    }
+
 
     catch (error) {
 
-        const area =
-            document.createElement("textarea");
 
-        area.value = result;
+        const temporary =
+            document.createElement(
+                "textarea"
+            );
 
-        document.body.appendChild(area);
 
-        area.select();
+        temporary.value =
+            result;
 
-        document.execCommand("copy");
 
-        area.remove();
+        document.body.appendChild(
+            temporary
+        );
 
-        alert("Name copied!");
+
+        temporary.select();
+
+
+        document.execCommand(
+            "copy"
+        );
+
+
+        temporary.remove();
+
+
+        alert(
+            "Name copied!"
+        );
 
     }
 
 }
 
-
-/* =========================
-   LOGOUT
-========================= */
-
-function logout() {
-
-    sessionStorage.removeItem(
-        "conquerorUnlocked"
-    );
-
-
-    document
-        .getElementById("generatorCard")
-        .classList.add("hidden");
-
-
-    document
-        .getElementById("loginCard")
-        .classList.remove("hidden");
-
-
-    document.getElementById("name").value = "";
-
-    document.getElementById("result").textContent =
-        "TCㅤ⚔ㅤＮＡＭＥ";
-
-}
-
-
-/* =========================
-   REMEMBER LOGIN
-========================= */
-
-if (
-    sessionStorage.getItem(
-        "conquerorUnlocked"
-    ) === "yes"
-) {
-
-    document
-        .getElementById("loginCard")
-        .classList.add("hidden");
-
-
-    document
-        .getElementById("generatorCard")
-        .classList.remove("hidden");
-
-}
-
-
-/* =========================
-   ENTER KEY
-========================= */
-
-document
-    .getElementById("access")
-    .addEventListener("keydown", function(event) {
-
-        if (event.key === "Enter") {
-
-            unlock();
-
-        }
-
-    });
-
 </script>
 
+
 </body>
-      </html>
+
+</html>
