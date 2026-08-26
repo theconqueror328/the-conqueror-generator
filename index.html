@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>THE ⚔ CONQUEROR — Name Generator</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(circle at top, #26334d 0%, #0b0f18 45%, #05070b 100%);
+
+    color: white;
+}
+
+.card {
+    width: min(430px, 100%);
+
+    background: rgba(13, 18, 29, 0.95);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 24px;
+
+    padding: 28px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.crest {
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 5px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin: 5px 0 8px;
+
+    letter-spacing: 1px;
+}
+
+.sub {
+    text-align: center;
+    color: #aab4c7;
+
+    margin: 0 0 25px;
+
+    font-size: 14px;
+}
+
+label {
+    display: block;
+
+    font-size: 13px;
+
+    color: #b9c2d3;
+
+    margin: 15px 0 8px;
+}
+
+input {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border-radius: 13px;
+
+    border: 1px solid #344056;
+
+    background: #080c14;
+
+    color: white;
+
+    outline: none;
+
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: #7f8da8;
+}
+
+button {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 0;
+
+    border-radius: 13px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    margin-top: 14px;
+
+    background: white;
+
+    color: #080b12;
+}
+
+button:hover {
+    filter: brightness(0.92);
+}
+
+.error {
+    color: #ff8e8e;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    margin-top: 12px;
+
+    min-height: 18px;
+}
+
+.preview {
+    margin-top: 20px;
+
+    padding: 22px 12px;
+
+    border-radius: 16px;
+
+    background: #080c14;
+
+    border: 1px solid #344056;
+
+    text-align: center;
+
+    overflow: auto;
+}
+
+.preview small {
+    display: block;
+
+    color: #8792a7;
+
+    margin-bottom: 9px;
+}
+
+#result {
+    font-size: 26px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+.copy {
+    margin-top: 12px;
+}
+
+.logout {
+    background: #202838;
+
+    color: #d9deea;
+
+    font-size: 13px;
+}
+
+.note {
+    font-size: 11px;
+
+    color: #778298;
+
+    text-align: center;
+
+    margin-top: 18px;
+
+    line-height: 1.5;
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     GUILD LOGIN SCREEN
+========================= -->
+
+<div class="card" id="loginCard">
+
+    <div class="crest">⚔</div>
+
+    <h1>
+        THEㅤ⚔ㅤCONQUEROR
+    </h1>
+
+    <p class="sub">
+        Guild Name Generator
+    </p>
+
+
+    <label for="access">
+        Guild Access Code
+    </label>
+
+    <input
+        id="access"
+        type="password"
+        placeholder="Enter guild access code"
+        autocomplete="off"
+    >
+
+
+    <button onclick="unlock()">
+        ENTER GUILD
+    </button>
+
+
+    <div class="error" id="loginError"></div>
+
+
+    <div class="note">
+        Private guild generator • Authorized members only
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     NAME GENERATOR
+========================= -->
+
+<div class="card hidden" id="generatorCard">
+
+    <div class="crest">⚔</div>
+
+    <h1>
+        TCㅤ⚔ㅤNAME
+    </h1>
+
+    <p class="sub">
+        THEㅤ⚔ㅤCONQUEROR
+    </p>
+
+
+    <label for="name">
+        Enter your Free Fire name
+    </label>
+
+
+    <input
+        id="name"
+        type="text"
+        maxlength="20"
+        placeholder="e.g. SPENCER"
+        autocomplete="off"
+        oninput="generate()"
+    >
+
+
+    <div class="preview">
+
+        <small>
+            Your guild name
+        </small>
+
+        <div id="result">
+            TCㅤ⚔ㅤＮＡＭＥ
+        </div>
+
+    </div>
+
+
+    <button class="copy" onclick="copyName()">
+        📋 COPY NAME
+    </button>
+
+
+    <button class="logout" onclick="logout()">
+        🔒 LOCK GENERATOR
+    </button>
+
+
+    <div class="note">
+        Approved guild format:
+        <b>TCㅤ⚔ㅤＮＡＭＥ</b>
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =========================
+   GUILD SETTINGS
+========================= */
+
+const ACCESS_CODE = "conqueror";
+
+const PREFIX = "TCㅤ⚔ㅤ";
+
+
+/* =========================
+   FULL-WIDTH TEXT
+========================= */
+
+function fullWidth(text) {
+
+    return [...text].map(character => {
+
+        const code = character.charCodeAt(0);
+
+        if (code >= 33 && code <= 126) {
+
+            return String.fromCharCode(code + 65248);
+
+        }
+
+        if (character === " ") {
+
+            return "　";
+
+        }
+
+        return character;
+
+    }).join("");
+
+}
+
+
+/* =========================
+   UNLOCK GUILD
+========================= */
+
+function unlock() {
+
+    const entered =
+        document.getElementById("access").value;
+
+    const error =
+        document.getElementById("loginError");
+
+
+    if (entered === ACCESS_CODE) {
+
+        sessionStorage.setItem(
+            "conquerorUnlocked",
+            "yes"
+        );
+
+
+        document
+            .getElementById("loginCard")
+            .classList.add("hidden");
+
+
+        document
+            .getElementById("generatorCard")
+            .classList.remove("hidden");
+
+
+        error.textContent = "";
+
+        document.getElementById("access").value = "";
+
+        document.getElementById("name").focus();
+
+    }
+
+    else {
+
+        error.textContent =
+            "Incorrect guild access code.";
+
+    }
+
+}
+
+
+/* =========================
+   GENERATE NAME
+========================= */
+
+function generate() {
+
+    const name =
+        document.getElementById("name").value.trim();
+
+
+    if (name) {
+
+        document.getElementById("result").textContent =
+            PREFIX + fullWidth(name);
+
+    }
+
+    else {
+
+        document.getElementById("result").textContent =
+            "TCㅤ⚔ㅤＮＡＭＥ";
+
+    }
+
+}
+
+
+/* =========================
+   COPY NAME
+========================= */
+
+async function copyName() {
+
+    const result =
+        document.getElementById("result").textContent;
+
+
+    if (result === "TCㅤ⚔ㅤＮＡＭＥ") {
+
+        return;
+
+    }
+
+
+    try {
+
+        await navigator.clipboard.writeText(result);
+
+        alert("Copied: " + result);
+
+    }
+
+    catch (error) {
+
+        const area =
+            document.createElement("textarea");
+
+        area.value = result;
+
+        document.body.appendChild(area);
+
+        area.select();
+
+        document.execCommand("copy");
+
+        area.remove();
+
+        alert("Name copied!");
+
+    }
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout() {
+
+    sessionStorage.removeItem(
+        "conquerorUnlocked"
+    );
+
+
+    document
+        .getElementById("generatorCard")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("loginCard")
+        .classList.remove("hidden");
+
+
+    document.getElementById("name").value = "";
+
+    document.getElementById("result").textContent =
+        "TCㅤ⚔ㅤＮＡＭＥ";
+
+}
+
+
+/* =========================
+   REMEMBER LOGIN
+========================= */
+
+if (
+    sessionStorage.getItem(
+        "conquerorUnlocked"
+    ) === "yes"
+) {
+
+    document
+        .getElementById("loginCard")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("generatorCard")
+        .classList.remove("hidden");
+
+}
+
+
+/* =========================
+   ENTER KEY
+========================= */
+
+document
+    .getElementById("access")
+    .addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+
+            unlock();
+
+        }
+
+    });
+
+</script>
+
+</body>
+      </html>
