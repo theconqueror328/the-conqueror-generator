@@ -22,9 +22,11 @@ content="width=device-width, initial-scale=1.0">
 body {
   margin: 0;
   min-height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   padding: 16px;
 
   font-family: Arial, sans-serif;
@@ -54,7 +56,8 @@ body {
 
   padding: 26px;
 
-  box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.55);
 }
 
 .guild-logo {
@@ -64,6 +67,7 @@ body {
   object-fit: contain;
 
   display: block;
+
   margin: 0 auto 12px;
 }
 
@@ -82,8 +86,11 @@ h1 {
 
 label {
   display: block;
+
   color: #b9c2d3;
+
   font-size: 13px;
+
   margin-bottom: 8px;
 }
 
@@ -104,22 +111,29 @@ label {
 
 input {
   width: 100%;
+
   padding: 15px;
 
   border-radius: 13px;
+
   border: 1px solid #344056;
 
   background: #080c14;
+
   color: white;
 
   font-size: 16px;
+
   outline: none;
 
-  text-transform: uppercase;
+  /*
+    IMPORTANT:
+    Do not transform the input.
+    The generated result handles the style.
+  */
 }
 
 input::placeholder {
-  text-transform: none;
   color: #667085;
 }
 
@@ -129,26 +143,33 @@ input:focus {
 
 .preview {
   margin-top: 20px;
+
   padding: 22px 10px;
 
   background: #080c14;
 
   border: 1px solid #344056;
+
   border-radius: 16px;
 
   text-align: center;
+
   overflow-x: auto;
 }
 
 .preview-title {
   color: #8792a7;
+
   font-size: 12px;
+
   margin-bottom: 10px;
 }
 
 #result {
   font-size: 22px;
+
   font-weight: bold;
+
   white-space: nowrap;
 }
 
@@ -156,15 +177,19 @@ button {
   width: 100%;
 
   margin-top: 14px;
+
   padding: 14px;
 
   border: none;
+
   border-radius: 13px;
 
   background: white;
+
   color: #080b12;
 
   font-size: 15px;
+
   font-weight: bold;
 
   cursor: pointer;
@@ -189,9 +214,11 @@ button:hover {
 
 .info {
   text-align: center;
+
   margin-top: 18px;
 
   color: #778298;
+
   font-size: 11px;
 }
 
@@ -243,6 +270,7 @@ button:hover {
   .preview {
     padding: 20px 8px;
   }
+
 }
 
 @media (max-width: 360px) {
@@ -263,11 +291,13 @@ button:hover {
   #result {
     font-size: 17px;
   }
+
 }
 
 </style>
 
 </head>
+
 
 <body>
 
@@ -278,15 +308,21 @@ src="logo.png"
 alt="THE CONQUEROR Logo"
 class="guild-logo">
 
-<h1>ᴛʜᴇㅤᴄᴏɴǫᴜᴇʀᴏʀ</h1>
+
+<h1>
+ᴛʜᴇㅤᴄᴏɴǫᴜᴇʀᴏʀ
+</h1>
+
 
 <div class="subtitle">
 Guild Name Generator
 </div>
 
+
 <label>
 Choose your style
 </label>
+
 
 <div class="gender-buttons">
 
@@ -297,6 +333,7 @@ onclick="selectStyle('male')">
 ⚔ MALE
 </button>
 
+
 <button
 id="femaleBtn"
 onclick="selectStyle('female')">
@@ -305,11 +342,15 @@ onclick="selectStyle('female')">
 
 </div>
 
+
 <label
 for="name"
 style="margin-top:20px;">
+
 Enter your Free Fire name
+
 </label>
+
 
 <input
 id="name"
@@ -319,11 +360,13 @@ placeholder="Enter your name"
 autocomplete="off"
 oninput="generateName()">
 
+
 <div class="preview">
 
 <div class="preview-title">
 YOUR GUILD NAME
 </div>
+
 
 <div id="result">
 ᴛᴄㅤɴᴀᴍᴇ
@@ -331,107 +374,141 @@ YOUR GUILD NAME
 
 </div>
 
+
 <button
 id="copyButton"
 onclick="copyName()">
+
 📋 COPY NAME
+
 </button>
 
+
 <div class="info">
+
 Official ᴛʜᴇㅤᴄᴏɴǫᴜᴇʀᴏʀ name format
+
 </div>
 
 </div>
+
 
 <script>
 
-/* ================================
-   SELECTED STYLE
-================================ */
+
+/* =====================================
+   CURRENT STYLE
+===================================== */
 
 let selectedStyle = "male";
 
 
-/* ================================
-   GUILD PREFIXES
-================================ */
+/* =====================================
+   PREFIXES
+===================================== */
 
 const MALE_PREFIX = "ᴛᴄㅤ";
+
 const FEMALE_PREFIX = "ᴛᴄㅤ♡ㅤ";
 
 
-/* ================================
-   SMALL-CAP CONVERTER
-================================ */
+/* =====================================
+   SMALL-CAP CHARACTER MAP
+===================================== */
 
 const SMALL_CAPS = {
 
-  a: "ᴀ",
-  b: "ʙ",
-  c: "ᴄ",
-  d: "ᴅ",
-  e: "ᴇ",
-  f: "ꜰ",
-  g: "ɢ",
-  h: "ʜ",
-  i: "ɪ",
-  j: "ᴊ",
-  k: "ᴋ",
-  l: "ʟ",
-  m: "ᴍ",
-  n: "ɴ",
-  o: "ᴏ",
-  p: "ᴘ",
+  "a": "ᴀ",
+  "b": "ʙ",
+  "c": "ᴄ",
+  "d": "ᴅ",
+  "e": "ᴇ",
+  "f": "ꜰ",
+  "g": "ɢ",
+  "h": "ʜ",
+  "i": "ɪ",
+  "j": "ᴊ",
+  "k": "ᴋ",
+  "l": "ʟ",
+  "m": "ᴍ",
+  "n": "ɴ",
+  "o": "ᴏ",
+  "p": "ᴘ",
 
-  /* No true Unicode small-cap Q */
-  q: "q",
+  /*
+    Unicode has no true small-cap Q.
+    Keep q lowercase.
+  */
+  "q": "q",
 
-  r: "ʀ",
+  "r": "ʀ",
 
-  /* No true Unicode small-cap S */
-  s: "s",
+  /*
+    Unicode has no true small-cap S.
+    Keep s lowercase.
+  */
+  "s": "s",
 
-  t: "ᴛ",
-  u: "ᴜ",
-  v: "ᴠ",
-  w: "ᴡ",
+  "t": "ᴛ",
+  "u": "ᴜ",
+  "v": "ᴠ",
+  "w": "ᴡ",
 
-  /* No true Unicode small-cap X */
-  x: "x",
+  /*
+    Unicode has no true small-cap X.
+    Keep x lowercase.
+  */
+  "x": "x",
 
-  y: "ʏ",
-  z: "ᴢ"
+  "y": "ʏ",
+  "z": "ᴢ"
 
 };
 
 
-/* ================================
-   CONVERT NAME
-================================ */
+/* =====================================
+   SMALL-CAP CONVERTER
+===================================== */
 
-function toSmallCaps(text) {
+function convertToSmallCaps(name) {
 
-  return Array.from(text)
-    .map(letter => {
+  let output = "";
 
-      const lower =
-        letter.toLowerCase();
+  for (const character of name) {
 
-      return SMALL_CAPS[lower] || letter;
+    const lower =
+      character.toLowerCase();
 
-    })
-    .join("");
+    if (SMALL_CAPS[lower]) {
+
+      output += SMALL_CAPS[lower];
+
+    } else {
+
+      /*
+        Numbers, spaces and symbols
+        remain unchanged.
+      */
+
+      output += character;
+
+    }
+
+  }
+
+  return output;
 
 }
 
 
-/* ================================
+/* =====================================
    SELECT MALE / FEMALE
-================================ */
+===================================== */
 
 function selectStyle(style) {
 
   selectedStyle = style;
+
 
   const maleBtn =
     document.getElementById("maleBtn");
@@ -443,11 +520,13 @@ function selectStyle(style) {
   if (style === "male") {
 
     maleBtn.classList.add("active");
+
     femaleBtn.classList.remove("active");
 
   } else {
 
     femaleBtn.classList.add("active");
+
     maleBtn.classList.remove("active");
 
   }
@@ -458,9 +537,9 @@ function selectStyle(style) {
 }
 
 
-/* ================================
+/* =====================================
    GENERATE NAME
-================================ */
+===================================== */
 
 function generateName() {
 
@@ -472,16 +551,15 @@ function generateName() {
 
 
   /*
-    Keep the typed input uppercase,
-    but DO NOT use full-width letters.
+    Get exactly what the player typed.
   */
 
-  const originalName =
+  const name =
     input.value.trim();
 
 
   /*
-    Select correct prefix.
+    Choose the correct prefix.
   */
 
   const prefix =
@@ -491,18 +569,20 @@ function generateName() {
 
 
   /*
-    Empty input.
+    Show preview if no name entered.
   */
 
-  if (originalName === "") {
+  if (name === "") {
 
-    const preview =
+    const previewName =
       selectedStyle === "male"
         ? "name"
         : "femalename";
 
+
     result.textContent =
-      prefix + toSmallCaps(preview);
+      prefix + convertToSmallCaps(previewName);
+
 
     return;
 
@@ -510,26 +590,37 @@ function generateName() {
 
 
   /*
-    Convert ONLY to small caps.
+    Convert the player's name
+    directly into small-cap Unicode.
+  */
+
+  const convertedName =
+    convertToSmallCaps(name);
+
+
+  /*
+    Final guild name.
   */
 
   result.textContent =
-    prefix + toSmallCaps(originalName);
+    prefix + convertedName;
 
 }
 
 
-/* ================================
-   COPY NAME
-================================ */
+/* =====================================
+   COPY
+===================================== */
 
 async function copyName() {
 
   const result =
     document.getElementById("result").textContent;
 
+
   const copyButton =
     document.getElementById("copyButton");
+
 
   const input =
     document.getElementById("name").value.trim();
@@ -540,12 +631,14 @@ async function copyName() {
     copyButton.textContent =
       "⚠ ENTER YOUR NAME";
 
+
     setTimeout(() => {
 
       copyButton.textContent =
         "📋 COPY NAME";
 
     }, 1800);
+
 
     return;
 
@@ -556,18 +649,28 @@ async function copyName() {
 
     await navigator.clipboard.writeText(result);
 
-  } catch (error) {
+  }
+
+  catch (error) {
 
     const temporary =
       document.createElement("textarea");
 
-    temporary.value = result;
 
-    document.body.appendChild(temporary);
+    temporary.value =
+      result;
+
+
+    document.body.appendChild(
+      temporary
+    );
+
 
     temporary.select();
 
+
     document.execCommand("copy");
+
 
     temporary.remove();
 
@@ -576,6 +679,7 @@ async function copyName() {
 
   copyButton.textContent =
     "✓ COPIED!";
+
 
   copyButton.classList.add(
     "copy-success"
@@ -587,6 +691,7 @@ async function copyName() {
     copyButton.textContent =
       "📋 COPY NAME";
 
+
     copyButton.classList.remove(
       "copy-success"
     );
@@ -596,9 +701,9 @@ async function copyName() {
 }
 
 
-/* ================================
-   INITIAL NAME
-================================ */
+/* =====================================
+   INITIAL PREVIEW
+===================================== */
 
 generateName();
 
