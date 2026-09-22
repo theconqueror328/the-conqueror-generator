@@ -17,1033 +17,659 @@ href="logo.png">
 <link rel="manifest"
 href="manifest.json">
 
-
 <style>
 
-/* =========================
-   RESET
-========================= */
-
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-
-
-/* =========================
-   BODY
-========================= */
 
 body {
+  margin: 0;
+  min-height: 100vh;
 
-    margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    min-height: 100vh;
+  padding: 16px;
 
-    display: flex;
+  font-family: Arial, sans-serif;
+  color: white;
 
-    justify-content: center;
+  background:
+    linear-gradient(
+      rgba(5,7,11,0.90),
+      rgba(5,7,11,0.96)
+    ),
+    url("logo.png");
 
-    align-items: center;
-
-    padding: 16px;
-
-    font-family: Arial, sans-serif;
-
-    color: white;
-
-    background:
-
-        linear-gradient(
-            rgba(5,7,11,0.90),
-            rgba(5,7,11,0.96)
-        ),
-
-        url("logo.png");
-
-    background-size: 380px;
-
-    background-position: center;
-
-    background-repeat: no-repeat;
-
-    background-attachment: fixed;
-
+  background-size: 380px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-
-
-/* =========================
-   CARD
-========================= */
 
 .card {
+  width: 100%;
+  max-width: 430px;
 
-    width: 100%;
+  background: rgba(13,18,29,0.97);
 
-    max-width: 430px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
 
-    background:
-        rgba(13,18,29,0.97);
+  padding: 26px;
 
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    border-radius: 24px;
-
-    padding: 26px;
-
-    box-shadow:
-        0 20px 60px
-        rgba(0,0,0,0.55);
-
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.55);
 }
-
-
-/* =========================
-   LOGO
-========================= */
 
 .guild-logo {
+  width: 105px;
+  height: 105px;
 
-    width: 105px;
+  object-fit: contain;
 
-    height: 105px;
-
-    object-fit: contain;
-
-    display: block;
-
-    margin: 0 auto 12px;
-
+  display: block;
+  margin: 0 auto 12px;
 }
-
-
-/* =========================
-   TITLE
-========================= */
 
 h1 {
-
-    text-align: center;
-
-    font-size: 23px;
-
-    margin: 8px 0;
-
+  text-align: center;
+  font-size: 23px;
+  margin: 8px 0;
 }
-
 
 .subtitle {
+  text-align: center;
 
-    text-align: center;
+  color: #aab4c7;
 
-    color: #aab4c7;
+  font-size: 13px;
 
-    font-size: 13px;
-
-    margin-bottom: 24px;
-
+  margin-bottom: 24px;
 }
-
-
-/* =========================
-   LABELS
-========================= */
 
 label {
+  display: block;
 
-    display: block;
+  color: #b9c2d3;
 
-    color: #b9c2d3;
+  font-size: 13px;
 
-    font-size: 13px;
-
-    margin-bottom: 8px;
-
+  margin-bottom: 8px;
 }
-
-
-/* =========================
-   STYLE BUTTONS
-========================= */
 
 .gender-buttons {
-
-    display: flex;
-
-    gap: 10px;
-
+  display: flex;
+  gap: 10px;
 }
-
 
 .gender-buttons button {
-
-    flex: 1;
-
-    margin-top: 0;
-
+  flex: 1;
+  margin-top: 0;
 }
-
 
 .gender-buttons button.active {
-
-    background: #7f8da8;
-
-    color: white;
-
+  background: #7f8da8;
+  color: white;
 }
-
-
-/* =========================
-   INPUT
-========================= */
 
 input {
+  width: 100%;
 
-    width: 100%;
+  padding: 15px;
 
-    padding: 15px;
+  border-radius: 13px;
 
-    border-radius: 13px;
+  border: 1px solid #344056;
 
-    border:
-        1px solid #344056;
+  background: #080c14;
 
-    background: #080c14;
+  color: white;
 
-    color: white;
+  font-size: 16px;
 
-    font-size: 16px;
+  outline: none;
 
-    outline: none;
-
-    text-transform: uppercase;
-
+  text-transform: uppercase;
 }
-
 
 input::placeholder {
-
-    text-transform: none;
-
-    color: #667085;
-
+  text-transform: none;
+  color: #667085;
 }
-
 
 input:focus {
-
-    border-color: #8c9ab5;
-
+  border-color: #8c9ab5;
 }
-
-
-/* =========================
-   PREVIEW
-========================= */
 
 .preview {
+  margin-top: 20px;
 
-    margin-top: 20px;
+  padding: 22px 10px;
 
-    padding: 22px 10px;
+  background: #080c14;
 
-    background: #080c14;
+  border: 1px solid #344056;
 
-    border:
-        1px solid #344056;
+  border-radius: 16px;
 
-    border-radius: 16px;
+  text-align: center;
 
-    text-align: center;
-
-    overflow-x: auto;
-
+  overflow-x: auto;
 }
-
 
 .preview-title {
+  color: #8792a7;
 
-    color: #8792a7;
+  font-size: 12px;
 
-    font-size: 12px;
-
-    margin-bottom: 10px;
-
+  margin-bottom: 10px;
 }
-
 
 #result {
+  font-size: 22px;
 
-    font-size: 22px;
+  font-weight: bold;
 
-    font-weight: bold;
-
-    white-space: nowrap;
-
+  white-space: nowrap;
 }
-
-
-/* =========================
-   BUTTONS
-========================= */
 
 button {
+  width: 100%;
 
-    width: 100%;
+  margin-top: 14px;
 
-    margin-top: 14px;
+  padding: 14px;
 
-    padding: 14px;
+  border: none;
 
-    border: none;
+  border-radius: 13px;
 
-    border-radius: 13px;
+  background: white;
 
-    background: white;
+  color: #080b12;
 
-    color: #080b12;
+  font-size: 15px;
 
-    font-size: 15px;
+  font-weight: bold;
 
-    font-weight: bold;
+  cursor: pointer;
 
-    cursor: pointer;
-
-    transition:
-        transform 0.15s ease,
-        opacity 0.15s ease;
-
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
 }
-
 
 button:active {
-
-    transform: scale(0.97);
-
+  transform: scale(0.97);
 }
-
 
 button:hover {
-
-    opacity: 0.92;
-
+  opacity: 0.92;
 }
-
-
-/* =========================
-   COPY SUCCESS
-========================= */
 
 .copy-success {
-
-    background: #7f8da8 !important;
-
-    color: white !important;
-
+  background: #7f8da8 !important;
+  color: white !important;
 }
-
-
-/* =========================
-   INFO
-========================= */
 
 .info {
+  text-align: center;
 
-    text-align: center;
+  margin-top: 18px;
 
-    margin-top: 18px;
+  color: #778298;
 
-    color: #778298;
-
-    font-size: 11px;
-
+  font-size: 11px;
 }
-
-
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width: 480px) {
 
-    body {
+  body {
+    padding: 10px;
+    align-items: center;
+  }
 
-        padding: 10px;
+  .card {
+    padding: 22px 18px;
+    border-radius: 20px;
+  }
 
-        align-items: center;
+  .guild-logo {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+  }
 
-    }
+  h1 {
+    font-size: 20px;
+  }
 
+  .subtitle {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
 
-    .card {
+  label {
+    font-size: 12px;
+  }
 
-        padding: 22px 18px;
+  input {
+    padding: 14px;
+    font-size: 16px;
+  }
 
-        border-radius: 20px;
+  button {
+    padding: 14px;
+    font-size: 14px;
+  }
 
-    }
+  #result {
+    font-size: 19px;
+  }
 
-
-    .guild-logo {
-
-        width: 90px;
-
-        height: 90px;
-
-        margin-bottom: 10px;
-
-    }
-
-
-    h1 {
-
-        font-size: 20px;
-
-    }
-
-
-    .subtitle {
-
-        font-size: 12px;
-
-        margin-bottom: 20px;
-
-    }
-
-
-    label {
-
-        font-size: 12px;
-
-    }
-
-
-    input {
-
-        padding: 14px;
-
-        font-size: 16px;
-
-    }
-
-
-    button {
-
-        padding: 14px;
-
-        font-size: 14px;
-
-    }
-
-
-    #result {
-
-        font-size: 19px;
-
-    }
-
-
-    .preview {
-
-        padding: 20px 8px;
-
-    }
-
+  .preview {
+    padding: 20px 8px;
+  }
 }
-
-
-/* =========================
-   VERY SMALL PHONES
-========================= */
 
 @media (max-width: 360px) {
 
-    .card {
+  .card {
+    padding: 20px 14px;
+  }
 
-        padding: 20px 14px;
+  .guild-logo {
+    width: 80px;
+    height: 80px;
+  }
 
-    }
+  h1 {
+    font-size: 18px;
+  }
 
-
-    .guild-logo {
-
-        width: 80px;
-
-        height: 80px;
-
-    }
-
-
-    h1 {
-
-        font-size: 18px;
-
-    }
-
-
-    #result {
-
-        font-size: 17px;
-
-    }
-
+  #result {
+    font-size: 17px;
+  }
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <div class="card">
 
-
-    <!-- GUILD LOGO -->
-
-    <img
-
-        src="logo.png"
-
-        alt="ᴛʜᴇㅤᴄᴏɴǫᴜᴇʀᴏʀ Logo"
-
-        class="guild-logo"
-
-    >
-
-
-    <!-- GUILD NAME -->
-
-    <h1>
-
-        ᴛʜᴇㅤᴄᴏɴǫᴜᴇʀᴏʀ
-
-    </h1>
-
-
-    <div class="subtitle">
-
-        Guild Name Generator
-
-    </div>
-
-
-    <!-- STYLE -->
-
-    <label>
-
-        Choose your style
-
-    </label>
-
-
-    <div class="gender-buttons">
-
-
-        <button
-
-            id="maleBtn"
-
-            class="active"
-
-            onclick="selectStyle('male')">
-
-            ⚔ MALE
-
-        </button>
-
-
-        <button
-
-            id="femaleBtn"
-
-            onclick="selectStyle('female')">
-
-            ♡ FEMALE
-
-        </button>
-
-
-    </div>
-
-
-    <!-- NAME INPUT -->
-
-    <label
-
-        for="name"
-
-        style="margin-top:20px;">
-
-        Enter your Free Fire name
-
-    </label>
-
-
-    <input
-
-        id="name"
-
-        type="text"
-
-        maxlength="20"
-
-        placeholder="Enter your name"
-
-        autocomplete="off"
-
-        oninput="generateName()"
-
-    >
-
-
-    <!-- PREVIEW -->
-
-    <div class="preview">
-
-
-        <div class="preview-title">
-
-            YOUR GUILD NAME
-
-        </div>
-
-
-        <div id="result">
-
-            ᴛᴄㅤＮＡＭＥ
-
-        </div>
-
-
-    </div>
-
-
-    <!-- COPY BUTTON -->
-
-    <button
-
-        id="copyButton"
-
-        onclick="copyName()">
-
-        📋 COPY NAME
-
-    </button>
-
-
-    <div class="info">
-
-        Official ᴛʜᴇㅤᴄᴏɴǫᴜᴇʀᴏʀ name format
-
-    </div>
-
+<img
+src="logo.png"
+alt="THE CONQUEROR Logo"
+class="guild-logo">
+
+<h1>ᴛʜᴇㅤᴄᴏɴǫᴜᴇʀᴏʀ</h1>
+
+<div class="subtitle">
+Guild Name Generator
+</div>
+
+<label>
+Choose your style
+</label>
+
+<div class="gender-buttons">
+
+<button
+id="maleBtn"
+class="active"
+onclick="selectStyle('male')">
+⚔ MALE
+</button>
+
+<button
+id="femaleBtn"
+onclick="selectStyle('female')">
+♡ FEMALE
+</button>
+
+</div>
+
+<label
+for="name"
+style="margin-top:20px;">
+Enter your Free Fire name
+</label>
+
+<input
+id="name"
+type="text"
+maxlength="20"
+placeholder="Enter your name"
+autocomplete="off"
+oninput="generateName()">
+
+<div class="preview">
+
+<div class="preview-title">
+YOUR GUILD NAME
+</div>
+
+<div id="result">
+ᴛᴄㅤɴᴀᴍᴇ
+</div>
+
+</div>
+
+<button
+id="copyButton"
+onclick="copyName()">
+📋 COPY NAME
+</button>
+
+<div class="info">
+Official ᴛʜᴇㅤᴄᴏɴǫᴜᴇʀᴏʀ name format
+</div>
 
 </div>
 
 
 <script>
 
-
-/* =========================
-   SETTINGS
-========================= */
-
 let selectedStyle = "male";
 
 
-const MALE_PREFIX =
+/*
+  THE CONQUEROR PREFIXES
+*/
 
-    "ᴛᴄㅤ";
-
-
-const FEMALE_PREFIX =
-
-    "ᴛᴄㅤ♡ㅤ";
+const MALE_PREFIX = "ᴛᴄㅤ";
+const FEMALE_PREFIX = "ᴛᴄㅤ♡ㅤ";
 
 
-/* =========================
-   FULL WIDTH TEXT
-========================= */
+/*
+  SMALL-CAP LETTER CONVERTER
 
-function fullWidth(text) {
+  Example:
+
+  Spencer
+  ↓
+  sᴘᴇɴᴄᴇʀ
+
+  Sarah
+  ↓
+  sᴀʀᴀʜ
+*/
+
+const smallCapsMap = {
+
+  a: "ᴀ",
+  b: "ʙ",
+  c: "ᴄ",
+  d: "ᴅ",
+  e: "ᴇ",
+  f: "ꜰ",
+  g: "ɢ",
+  h: "ʜ",
+  i: "ɪ",
+  j: "ᴊ",
+  k: "ᴋ",
+  l: "ʟ",
+  m: "ᴍ",
+  n: "ɴ",
+  o: "ᴏ",
+  p: "ᴘ",
+
+  /*
+    There is no perfect Unicode
+    small-cap version of Q,
+    so normal q is kept.
+  */
+  q: "q",
+
+  r: "ʀ",
+
+  /*
+    Unicode has no standard small-cap S,
+    so lowercase s is kept.
+  */
+  s: "s",
+
+  t: "ᴛ",
+  u: "ᴜ",
+  v: "ᴠ",
+  w: "ᴡ",
+
+  /*
+    Unicode has no standard small-cap X,
+    so lowercase x is kept.
+  */
+  x: "x",
+
+  y: "ʏ",
+  z: "ᴢ"
+
+};
 
 
-    return [...text].map(character => {
+function smallCaps(text) {
 
+  return [...text.toLowerCase()]
+    .map(character => {
 
-        const code =
+      return smallCapsMap[character] || character;
 
-            character.charCodeAt(0);
-
-
-        if (
-
-            code >= 33 &&
-
-            code <= 126
-
-        ) {
-
-
-            return String.fromCharCode(
-
-                code + 65248
-
-            );
-
-        }
-
-
-        if (
-
-            character === " "
-
-        ) {
-
-
-            return "　";
-
-        }
-
-
-        return character;
-
-
-    }).join("");
+    })
+    .join("");
 
 }
 
 
-/* =========================
-   SELECT STYLE
-========================= */
+/*
+  SELECT MALE / FEMALE
+*/
 
 function selectStyle(style) {
 
+  selectedStyle = style;
 
-    selectedStyle = style;
+  const maleBtn =
+    document.getElementById("maleBtn");
 
-
-    const maleBtn =
-
-        document.getElementById(
-
-            "maleBtn"
-
-        );
+  const femaleBtn =
+    document.getElementById("femaleBtn");
 
 
-    const femaleBtn =
+  if (style === "male") {
 
-        document.getElementById(
+    maleBtn.classList.add("active");
 
-            "femaleBtn"
+    femaleBtn.classList.remove("active");
 
-        );
+  }
 
+  else {
 
-    if (
+    femaleBtn.classList.add("active");
 
-        style === "male"
+    maleBtn.classList.remove("active");
 
-    ) {
-
-
-        maleBtn.classList.add(
-
-            "active"
-
-        );
+  }
 
 
-        femaleBtn.classList.remove(
-
-            "active"
-
-        );
-
-
-    }
-
-    else {
-
-
-        femaleBtn.classList.add(
-
-            "active"
-
-        );
-
-
-        maleBtn.classList.remove(
-
-            "active"
-
-        );
-
-    }
-
-
-    generateName();
+  generateName();
 
 }
 
 
-/* =========================
-   GENERATE NAME
-========================= */
+/*
+  GENERATE NAME
+*/
 
 function generateName() {
 
+  const input =
+    document.getElementById("name");
 
-    const input =
-
-        document.getElementById(
-
-            "name"
-
-        );
+  const cursorPosition =
+    input.selectionStart;
 
 
-    /* Automatically change typed
-       letters to CAPITAL letters */
+  /*
+    Automatically change typed letters
+    to uppercase inside the input.
+  */
 
-    const cursorPosition =
-
-        input.selectionStart;
-
-
-    input.value =
-
-        input.value.toUpperCase();
+  input.value =
+    input.value.toUpperCase();
 
 
-    try {
+  try {
 
-        input.setSelectionRange(
+    input.setSelectionRange(
+      cursorPosition,
+      cursorPosition
+    );
 
-            cursorPosition,
+  }
 
-            cursorPosition
-
-        );
-
-    }
-
-    catch (error) {}
+  catch (error) {}
 
 
-    const name =
+  const name =
+    input.value.trim();
 
-        input.value.trim();
-
-
-    const result =
-
-        document.getElementById(
-
-            "result"
-
-        );
+  const result =
+    document.getElementById("result");
 
 
-    if (
-
-        name.length === 0
-
-    ) {
-
-
-        if (
-
-            selectedStyle === "male"
-
-        ) {
+  const prefix =
+    selectedStyle === "male"
+      ? MALE_PREFIX
+      : FEMALE_PREFIX;
 
 
-            result.textContent =
+  /*
+    Empty input preview
+  */
 
-                "ᴛᴄㅤＮＡＭＥ";
+  if (name.length === 0) {
 
-
-        }
-
-        else {
-
-
-            result.textContent =
-
-                "ᴛᴄㅤ♡ㅤＦＥＭＡＬＥＮＡＭＥ";
-
-        }
-
-
-        return;
-
-    }
-
-
-    const prefix =
-
-        selectedStyle === "male"
-
-        ? MALE_PREFIX
-
-        : FEMALE_PREFIX;
-
+    const previewName =
+      selectedStyle === "male"
+        ? "name"
+        : "femalename";
 
     result.textContent =
+      prefix + smallCaps(previewName);
 
-        prefix + fullWidth(name);
+    return;
+
+  }
+
+
+  /*
+    Generate the actual guild name
+  */
+
+  result.textContent =
+    prefix + smallCaps(name);
 
 }
 
 
-/* =========================
-   COPY NAME
-========================= */
+/*
+  COPY NAME
+*/
 
 async function copyName() {
 
+  const result =
+    document.getElementById("result").textContent;
 
-    const result =
-
-        document.getElementById(
-
-            "result"
-
-        ).textContent;
+  const copyButton =
+    document.getElementById("copyButton");
 
 
-    const copyButton =
-
-        document.getElementById(
-
-            "copyButton"
-
-        );
+  const input =
+    document.getElementById("name").value.trim();
 
 
-    if (
+  /*
+    Don't allow copying the preview
+  */
 
-        result ===
-
-        "ᴛᴄㅤＮＡＭＥ"
-
-        ||
-
-        result ===
-
-        "ᴛᴄㅤ♡ㅤＦＥＭＡＬＥＮＡＭＥ"
-
-    ) {
-
-
-        copyButton.textContent =
-
-            "⚠ ENTER YOUR NAME";
-
-
-        setTimeout(() => {
-
-            copyButton.textContent =
-
-                "📋 COPY NAME";
-
-        }, 1800);
-
-
-        return;
-
-    }
-
-
-    try {
-
-
-        await navigator.clipboard.writeText(
-
-            result
-
-        );
-
-
-    }
-
-    catch (error) {
-
-
-        const temporary =
-
-            document.createElement(
-
-                "textarea"
-
-            );
-
-
-        temporary.value = result;
-
-
-        document.body.appendChild(
-
-            temporary
-
-        );
-
-
-        temporary.select();
-
-
-        document.execCommand(
-
-            "copy"
-
-        );
-
-
-        temporary.remove();
-
-    }
-
-
-    /* Success animation */
+  if (input.length === 0) {
 
     copyButton.textContent =
-
-        "✓ COPIED!";
-
-
-    copyButton.classList.add(
-
-        "copy-success"
-
-    );
+      "⚠ ENTER YOUR NAME";
 
 
     setTimeout(() => {
 
-
-        copyButton.textContent =
-
-            "📋 COPY NAME";
-
-
-        copyButton.classList.remove(
-
-            "copy-success"
-
-        );
-
+      copyButton.textContent =
+        "📋 COPY NAME";
 
     }, 1800);
+
+
+    return;
+
+  }
+
+
+  try {
+
+    await navigator.clipboard.writeText(result);
+
+  }
+
+  catch (error) {
+
+    /*
+      Backup copy method
+      for browsers that block
+      navigator.clipboard.
+    */
+
+    const temporary =
+      document.createElement("textarea");
+
+    temporary.value = result;
+
+    document.body.appendChild(temporary);
+
+    temporary.select();
+
+    document.execCommand("copy");
+
+    temporary.remove();
+
+  }
+
+
+  copyButton.textContent =
+    "✓ COPIED!";
+
+  copyButton.classList.add(
+    "copy-success"
+  );
+
+
+  setTimeout(() => {
+
+    copyButton.textContent =
+      "📋 COPY NAME";
+
+    copyButton.classList.remove(
+      "copy-success"
+    );
+
+  }, 1800);
 
 }
 
 </script>
-
 
 </body>
 
